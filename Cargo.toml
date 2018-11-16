@@ -1,7 +1,13 @@
 [package]
 name = "borrowed-thread"
 version = "0.1.0"
+description = "thread-safe way to pass borrow to thread::spawn"
+homepage = "https://github.com/Riey/borrowed-thread"
+repository = "https://github.com/Riey/borrowed-thread"
 authors = ["Riey <creeper844@gmail.com>"]
+license = "MIT"
+keywords = ["thread"]
+readme = "README.md"
 edition = "2018"
 
 [dependencies]

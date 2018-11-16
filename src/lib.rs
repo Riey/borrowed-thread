@@ -5,8 +5,34 @@ use std::thread;
 use std::marker::PhantomData;
 use std::io;
 
+struct JoinFlag {
+    is_joined: bool,
+}
+
+impl JoinFlag {
+    fn new() -> Self {
+        Self {
+            is_joined: false,
+        }
+    }
+
+    fn set_join(mut self) {
+        self.is_joined = true;
+    }
+}
+
+impl Drop for JoinFlag {
+    #[inline]
+    fn drop(&mut self) {
+        if !self.is_joined {
+            panic!("handle must be join before dropped")
+        }
+    }
+}
+
 pub struct BorrowedJoinHandle<'b, T> {
     inner: thread::JoinHandle<T>,
+    join_flag: JoinFlag,
     _marker: PhantomData<&'b ()>,
 }
 
@@ -24,6 +50,7 @@ impl<'b, T> BorrowedJoinHandle<'b, T> {
     fn new(inner: thread::JoinHandle<T>) -> Self {
         Self {
             inner,
+            join_flag: JoinFlag::new(),
             _marker: PhantomData,
         }
     }
@@ -35,6 +62,7 @@ impl<'b, T> BorrowedJoinHandle<'b, T> {
 
     #[inline]
     pub fn join(self) -> thread::Result<T> {
+        self.join_flag.set_join();
         self.inner.join()
     }
 }

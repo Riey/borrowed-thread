@@ -7,9 +7,22 @@ fn ref_mut_works() {
         0
     });
 
-    let ret = borrowed_handle.join().expect("join err");
+    assert_eq!(0, borrowed_handle.join().expect("join err"));
+    assert_eq!("ABCD", owned);
+}
 
-    assert_eq!(0, ret);
+#[test]
+#[should_panic]
+fn drop_without_join() {
+    let mut owned = "ABC".to_owned();
+
+    let borrowed_handle = super::spawn(|| {
+        owned.push('D');
+        0
+    });
+
+    drop(borrowed_handle);
+
     assert_eq!("ABCD", owned);
 }
 
