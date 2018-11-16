@@ -7,6 +7,7 @@ cache: cargo
 matrix:
   allow_failures:
     - rust: stable
+    - rust: beta
   fast_finish: true
 script:
   - cargo test --verbose --all
