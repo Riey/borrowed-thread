@@ -3,11 +3,10 @@ rust:
   - stable
   - beta
   - nightly
-cache: cargo
 matrix:
   allow_failures:
     - rust: stable
     - rust: beta
-  fast_finish: true
 script:
+  - cargo build --verbose --all
   - cargo test --verbose --all
