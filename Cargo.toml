@@ -1,6 +1,6 @@
 [package]
 name = "borrowed-thread"
-version = "0.1.0"
+version = "0.1.1"
 description = "thread-safe way to pass borrow to thread::spawn"
 homepage = "https://github.com/Riey/borrowed-thread"
 repository = "https://github.com/Riey/borrowed-thread"
