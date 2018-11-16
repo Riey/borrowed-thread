@@ -1,5 +1,7 @@
 # borrowed-thread
 
+[![Build Status](https://travis-ci.com/Riey/borrowed-thread.svg?branch=master)](https://travis-ci.com/Riey/borrowed-thread)
+
 thread-safe way to pass borrow to thread::spawn
 
 NEED nightly rust!
