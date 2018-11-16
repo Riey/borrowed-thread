@@ -54,7 +54,7 @@ assert_eq!(0, ret);
 ```rust
 let mut owned = "ABC".to_owned();
 
-let borrowed_handle = super::spawn(|| {
+let borrowed_handle = borrowed_thread::spawn(|| {
     owned.push('D');
     0
 });
