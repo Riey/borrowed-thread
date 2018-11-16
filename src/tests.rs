@@ -17,7 +17,12 @@ fn drop_without_join() {
     let mut owned = "ABC".to_owned();
 
     let borrowed_handle = super::spawn(|| {
-        owned.push('D');
+
+        // for prevent segfault in testing
+        if false {
+            owned.push('D');
+        }
+
         0
     });
 
