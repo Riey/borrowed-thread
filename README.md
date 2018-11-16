@@ -7,6 +7,7 @@ NEED nightly rust!
 ## benchmark
 
 test bench::bench_borrowed_thread ... bench:      18,902 ns/iter (+/- 690)
+
 test bench::bench_std_thread      ... bench:      18,859 ns/iter (+/- 684)
 
 

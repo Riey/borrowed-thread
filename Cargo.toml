@@ -1,6 +1,6 @@
 [package]
 name = "borrowed-thread"
-version = "0.1.1"
+version = "0.1.2"
 description = "thread-safe way to pass borrow to thread::spawn"
 homepage = "https://github.com/Riey/borrowed-thread"
 repository = "https://github.com/Riey/borrowed-thread"
@@ -9,5 +9,9 @@ license = "MIT"
 keywords = ["thread"]
 readme = "README.md"
 edition = "2018"
+
+exclude = [
+    ".travis.yml"
+]
 
 [dependencies]
