@@ -1,5 +1,4 @@
 #![feature(thread_spawn_unchecked)]
-#![feature(test)]
 
 use std::thread;
 use std::marker::PhantomData;
@@ -90,9 +89,3 @@ where
 {
     spawn_with(thread::Builder::new(), f).unwrap()
 }
-
-#[cfg(test)]
-mod tests;
-
-#[cfg(test)]
-mod bench;

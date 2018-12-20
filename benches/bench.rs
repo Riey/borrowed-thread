@@ -1,3 +1,5 @@
+#![feature(test)]
+
 extern crate test;
 
 use self::test::Bencher;
@@ -9,7 +11,6 @@ fn bench_std_thread(b: &mut Bencher) {
     let num = Arc::new(AtomicUsize::new(0));
 
     b.iter(|| {
-
         let num = num.clone();
 
         ::std::thread::spawn(move || {
@@ -28,7 +29,7 @@ fn bench_borrowed_thread(b: &mut Bencher) {
     b.iter(|| {
         let num = num.clone();
 
-        super::spawn(|| {
+        borrowed_thread::spawn(|| {
             num.fetch_add(1, Ordering::Relaxed);
         }).join().unwrap();
     });
