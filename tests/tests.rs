@@ -2,7 +2,7 @@
 fn ref_mut_works() {
     let mut owned = "ABC".to_owned();
 
-    let borrowed_handle = super::spawn(|| {
+    let borrowed_handle = borrowed_thread::spawn(|| {
         owned.push('D');
         0
     });
@@ -16,7 +16,7 @@ fn ref_mut_works() {
 fn drop_without_join() {
     let mut owned = "ABC".to_owned();
 
-    let borrowed_handle = super::spawn(|| {
+    let borrowed_handle = borrowed_thread::spawn(|| {
 
         // for prevent segfault in testing
         if false {
@@ -35,7 +35,7 @@ fn drop_without_join() {
 fn ref_works() {
     let owned = "ABC".to_owned();
 
-    let borrowed_handle = super::spawn(|| {
+    let borrowed_handle = borrowed_thread::spawn(|| {
         assert_eq!("ABC", owned);
         0
     });
